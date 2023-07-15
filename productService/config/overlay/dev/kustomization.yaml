@@ -6,5 +6,6 @@ images:
 - name: regoo707/product-service
   newTag: b23b06c
 configMapGenerator:
-  - envs:
+  - name: product-service
+    envs:
       - .env
