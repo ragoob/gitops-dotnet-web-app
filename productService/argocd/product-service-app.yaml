@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: product-service
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ragoob/gitops-dotnet-web-app.git
+    targetRevision: HEAD
+    path: /productService/config/overlay/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: services-development
+  syncPolicy:
+    automated:
+      selfHeal: true
+    hooks:
+    - name: presync
+      beforeSync:
+        exec:
+          command: ["/bin/bash", "-c"]
+          args: ["docker run --rm your-image-name dotnet ef database update"]
