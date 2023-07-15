@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: product-service
-data:
-  ConnectionStrings__DefaultConnection: "Host=20.241.187.240;Port=5432;Database=product_db;Username=postgres;Password=postgres;"

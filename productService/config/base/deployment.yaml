@@ -16,7 +16,7 @@ spec:
         image: regoo707/product-service
         envFrom:
         - configMapRef:
-            name: product-service
+            name: product-service-cm
         livenessProbe:
           httpGet:
             path: /health
