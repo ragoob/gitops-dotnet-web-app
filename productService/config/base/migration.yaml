@@ -17,7 +17,7 @@ spec:
         - name: GIT_REPO
           value: https://github.com/ragoob/gitops-dotnet-web-app.git
         - name: ConnectionStrings__DefaultConnection
-          value: Host=20.241.187.240;Port=5432;Database=product_db;Username=postgres;Password=postgres
+          value: Host=postgres.postgres.svc.cluster.local;Port=5432;Database=product_db;Username=postgres;Password=postgres
         - name: SERVICE_PATH
           value: gitops-dotnet-web-app/productService
       restartPolicy: Never
