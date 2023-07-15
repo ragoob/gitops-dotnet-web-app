@@ -24,6 +24,13 @@ namespace productService.Infrastructure {
             productImages.HasOne(pm=> pm.Product)
             .WithMany(p=> p.Images)
             .HasForeignKey(pm=> pm.ProductId);
+
+            var ProductFiles = modelBuilder.Entity<ProductFile>();
+              ProductFiles.ToTable("product_files");
+            ProductFiles.HasKey(pf=> pf.Id);
+            ProductFiles.HasOne(pf=> pf.Product)
+            .WithMany(p=> p.Files)
+            .HasForeignKey(pm=> pm.ProductId);
         
         }
     }

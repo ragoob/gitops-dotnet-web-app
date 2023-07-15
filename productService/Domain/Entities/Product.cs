@@ -11,5 +11,7 @@ namespace productService.Doamin.Entities {
         public decimal Price { get; set; }
 
         public virtual ICollection<ProductImages> Images { get;set;}
+
+         public virtual ICollection<ProductFile> Files { get;set;}
     }
 }
