@@ -4,7 +4,7 @@ resources:
 - ../../base
 images:
 - name: regoo707/product-service
-  newTag: b23b06c
+  newTag: 2019eff
 configMapGenerator:
   - name: product-service-cm
     envs:
