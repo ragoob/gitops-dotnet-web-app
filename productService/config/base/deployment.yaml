@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sum-service
+  name: product-service
 spec:
   selector:
     matchLabels:
@@ -14,6 +14,9 @@ spec:
       containers:
       - name: product-service
         image: regoo707/product-service
+        envFrom:
+        - configMapRef:
+            name: product-service
         livenessProbe:
           httpGet:
             path: /health
