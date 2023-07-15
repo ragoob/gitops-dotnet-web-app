@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: schema-migrate-
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+      - name: ef-migration
+        image: mcr.microsoft.com/dotnet/sdk:6.0
+        command: ["bash -c",  "apt install git && git clone $GIT_REPO && cd $SERVICE_PATH && dotnet tool install --global dotnet-ef && export PATH=\"$PATH:/root/.dotnet/tools\" && dotnet ef database update"]
+        envFrom:
+        - configMapRef:
+            name: product-service-cm
+      restartPolicy: Never
