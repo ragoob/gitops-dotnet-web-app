@@ -17,6 +17,13 @@ namespace productService.Infrastructure {
             var product = modelBuilder.Entity<Product>();
             product.ToTable("product");
             product.HasKey(p=> p.Id);
+
+            var productImages = modelBuilder.Entity<ProductImages>();
+            productImages.ToTable("product_images");
+            productImages.HasKey(pm=> pm.Id);
+            productImages.HasOne(pm=> pm.Product)
+            .WithMany(p=> p.Images)
+            .HasForeignKey(pm=> pm.ProductId);
         
         }
     }
